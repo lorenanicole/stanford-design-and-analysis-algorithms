@@ -13,7 +13,7 @@ public class KaratsubaMultiplication {
 
     public KaratsubaMultiplication() { }
 
-    public Integer multiply(Integer numOne, Integer numTwo) {
+    public static Integer multiply(Integer numOne, Integer numTwo) {
         // Algorithm: http://people.cs.uchicago.edu/~laci/HANDOUTS/karatsuba.pdf
         final String numTwoString = numTwo.toString();
         final String numOneString = numOne.toString();
@@ -51,7 +51,7 @@ public class KaratsubaMultiplication {
 
     }
 
-    private String padZeros(String paddedNumber, Integer n) {
+    private static String padZeros(String paddedNumber, Integer n) {
         if (paddedNumber.length() < n) {
             Integer numZeros = n - paddedNumber.length();
             StringBuilder sb = new StringBuilder(paddedNumber);
@@ -60,16 +60,15 @@ public class KaratsubaMultiplication {
         return paddedNumber;
     }
 
-    private List<Integer> computeHalves(String paddedNum, Integer nTwo) {
+    private static List<Integer> computeHalves(String paddedNum, Integer nTwo) {
         Integer one = Integer.valueOf(paddedNum) / ((int) Math.pow(10, nTwo));
         Integer two = Integer.valueOf(paddedNum) % ((int) Math.pow(10, nTwo));
         return Arrays.asList(one, two);
     }
 
     public static void main(String[] args) {
-        KaratsubaMultiplication karatsuba = new KaratsubaMultiplication();
-        System.out.println(karatsuba.multiply(12, 51) == 612);
-        System.out.println(karatsuba.multiply(1234,5678) == 7006652);
-        System.out.println(karatsuba.multiply(12344,56788) == 700991072);
+        System.out.println(KaratsubaMultiplication.multiply(12, 51) == 612);
+        System.out.println(KaratsubaMultiplication.multiply(1234,5678) == 7006652);
+        System.out.println(KaratsubaMultiplication.multiply(12344,56788) == 700991072);
     }
 }
